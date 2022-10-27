@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "description": "For any questions, contact us at [api@attentivemobile.com](mailto:api@attentivemobile.com).\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "description": "For any questions, contact us at [api@attentivemobile.com](mailto:api@attentivemobile.com).\n\n# Authentication\n\nTo keep data on Attentive's platform safe and secure, all apps connecting with Attentive's APIs must authenticate when making API requests. Different types of apps require different authentication or authorization methods:\n\n* Private apps use basic HTTP authentication.\n* Public apps use OAuth 2.0.\n\nThis Open API Spec is configured to use basic HTTP authentication by using an API key as the Bearer Token. Click the Authorize button and enter your Bearer Token to authenticate. See [Authentication](https://docs.attentivemobile.com/pages/authentication/) for more info.",
     "title": "Attentive API",
     "version": ""
   },
@@ -111,13 +111,6 @@
       "get": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "webhooks:write"
-            ]
-          }
-        ],
         "summary": "List webhooks",
         "description": "Make an API call to this endpoint to list existing webhooks.",
         "operationId": "getWebhooks",
@@ -155,13 +148,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "webhooks:write"
-            ]
-          }
-        ],
         "summary": "Create webhook",
         "description": "Make an API call to this endpoint to subscribe to a webhook.\n\nEvents are a collection of strings of the following types:\n* `sms.subscribed`\n* `sms.sent`\n* `sms.message_link_click`\n* `email.subscribed`\n* `email.unsubscribed`\n* `email.message_link_click`\n* `email.opened`\n* `custom_attribute.set`\n\nEvent types are case sensitive.\n\nAll events included will be sent to the URL.\n",
         "operationId": "createWebhook",
@@ -211,13 +197,6 @@
       "delete": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "webhooks:write"
-            ]
-          }
-        ],
         "summary": "Delete webhook",
         "description": "Make an API call to this endpoint to remove a webhook.",
         "operationId": "deleteWebhook",
@@ -259,13 +238,6 @@
       "put": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "webhooks:write"
-            ]
-          }
-        ],
         "summary": "Update webhook",
         "description": "Make an API call to this endpoint to update a webhook",
         "operationId": "updateWebhook",
@@ -389,13 +361,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "ecommerce:write"
-            ]
-          }
-        ],
         "summary": "Product view",
         "description": "Make a call to this endpoint when a user views a product.",
         "operationId": "postProductViewEvents",
@@ -439,13 +404,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "ecommerce:write"
-            ]
-          }
-        ],
         "summary": "Add to cart",
         "description": "Make a call to this endpoint when a user adds a product to their shopping cart.",
         "operationId": "postAddToCartEvents",
@@ -489,13 +447,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "ecommerce:write"
-            ]
-          }
-        ],
         "summary": "Purchase",
         "description": "Make a call to this endpoint when a user generates an order or purchase.",
         "operationId": "postPurchaseEvents",
@@ -540,13 +491,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "events:write"
-            ]
-          }
-        ],
         "summary": "Custom Events",
         "description": "Make a call to this endpoint for any event-based data representing user actions.",
         "operationId": "postCustomEvents",
@@ -591,13 +535,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "attributes:write"
-            ]
-          }
-        ],
         "summary": "Custom Attributes",
         "description": "Make a call to this endpoint for any attribute-based data.  There are no limits to the amount of custom attributes that can be created. Note that you can create net-new properties with this API, however, it cannot be used to create new values for an existing UI-created property name. If a property name is created through the Attentive platform, all possible property values must also be defined in the platform.",
         "operationId": "postCustomAttributes",
@@ -640,13 +577,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "subscriptions:write"
-            ]
-          }
-        ],
         "summary": "Subscribe user",
         "description": "Make a call to this endpoint to opt-in a user to a subscription. \n\nNotes:\n- A legal disclosure is required when a user is opted-in programmatically.\n\n    - For marketing messages, required [legal language](https://docs.attentivemobile.com/pages/legal-docs/legal-disclosure-language/) must be included.\n\n    - For transactional messages, you must include a [transactional opt-in unit](https://docs.attentivemobile.com/pages/legal-docs/legal-transactional/).\n\n- By default, if a subscription already exists, it will try and record the attempt to create the subscription again. For TEXT subscriptions, this will result in a message being sent to the person indicating that they are already subscribed.\n",
         "operationId": "addSubscriptions",
@@ -694,13 +624,6 @@
       "get": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "subscriptions:write"
-            ]
-          }
-        ],
         "summary": "Get subscription eligibility for a user",
         "description": "Make a call to this endpoint to list all subscription types and channels a user is subscribed to. You can query for a subscriber using either their phone number or email. One of the query parameters is required in order to look up a subscriber. As an example, you can use this endpoint to check if a subscriber is eligible to receive SMS or email campaigns, and then send them a message based on that eligibility.\n",
         "operationId": "getSubscriptions",
@@ -760,13 +683,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "subscriptions:write"
-            ]
-          }
-        ],
         "summary": "Unsubscribe subscriptions for a user",
         "description": "Make a call to this endpoint to unsubscribe a user from a subscription type or channel. If no subscriptions\nare present in the request, the user is unsubscribed from all subscriptions. If subscriptions are present\nin the request, the user is unsubscribed from the requested type or channel combination. By default, if a\nsubscription exists, but the user is already unsubscribed, it records the attempt to unsubscribe the\nsubscription again. For TEXT subscriptions, a message is sent to the person indicating that they are\nunsubscribed.\n\nFor the user object, the email data point determines which email subscriptions a user has and the phone data point \ndetermines which text (or sms) subscriptions a user has. Passing in an email does not locate, nor unsubscribe, \na user from any sms subscriptions. Similarly, passing in a phone does not locate, nor unsubscribe, a user from any email subscriptions.\n",
         "operationId": "unsubscribeSubscriptions",
@@ -818,13 +734,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "product_catalogs:write"
-            ]
-          }
-        ],
         "summary": "Upload Product Catalog",
         "description": "Make a call to this endpoint to start sending Attentive your full or partial product catalog.\nThe process starts with a POST to this endpoint, where you will receive a pre-signed AWS S3 URL. You can\nuse any language's http request libraries for uploading a file via HTTP. Here's how to do it with `curl` as an example\n\n\n```\ncurl --upload-file ${fileNameLocally} ${presignedURL}\n```\n\n\nand here's an example in Python\n```python\nimport requests\nwith open(filepath, 'rb') as f:\n    r = requests.put(upload_url, data=f)\n```\n\n[Here are examples from AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html) on how to send the file over in popular programming languages. Note that you aren't interested in\nthe portion of these examples where they are generating the pre-signed URL, but simply the http call to upload the file to the URL.\n\nOnce your full or partial product catalog begins to upload, the status is updated to\n`validating` while it's processing and the file is checked for errors. After the upload is\nvalidated, the status is updated to `validated` or skips directly to `completed`. When the\ncatalog is saved, the status is updated to `SAVED`. In cases where there are errors saving\nthe data, Attentive Engineering is notified and will contact you.\n\n\nTo ensure there are no validation errors in the file, you can set `validateOnly` parameter\nto `true` to avoid saving any data. We highly recommend this during your development to get a\nfaster feedback loop on any validation errors as you generate files.\n\n\nIf there are no errors returned in the upload response, your product catalog uploaded\nsuccessfully.\n",
         "operationId": "postUpload",
@@ -871,13 +780,6 @@
       },
       "get": {
         "x-external": true,
-        "security": [
-          {
-            "OAuthFlow": [
-              "product_catalogs:read"
-            ]
-          }
-        ],
         "tags": [
           "Product Catalog"
         ],
@@ -920,13 +822,6 @@
       "x-external": true,
       "description": "Making a GET request with the uploadID from your original catalog upload POST will give you the updated information on how the upload is progressing. You can also use the list endpoint as well to retrieve the same data. Please see the POST of `/product-catalog/uploads` for more detail.\n",
       "get": {
-        "security": [
-          {
-            "OAuthFlow": [
-              "product_catalogs:read"
-            ]
-          }
-        ],
         "summary": "Lookup Product Catalog Ingestion",
         "tags": [
           "Product Catalog"
@@ -977,13 +872,6 @@
         "x-external": true,
         "x-emits-event": true,
         "summary": "Add a delete request",
-        "security": [
-          {
-            "OAuthFlow": [
-              "privacy_requests:write"
-            ]
-          }
-        ],
         "tags": [
           "Privacy Request"
         ],
@@ -1042,13 +930,6 @@
       "post": {
         "x-external": true,
         "x-emits-event": false,
-        "security": [
-          {
-            "OAuthFlow": [
-              "identity:write"
-            ]
-          }
-        ],
         "summary": "Add a client user identifier or custom identifier(s) to a user",
         "description": "Make a call to this endpoint to associate a client user identifier or custom identifier(s) with other identifiers. A client user or custom identifier needs to be accompanied by at least one other identifier of the following types: phone, email, shopify id, klaviyo id, client user identifier, or custom identifier.\n",
         "operationId": "identify",
@@ -1078,20 +959,10 @@
   },
   "components": {
     "securitySchemes": {
-      "OAuthFlow": {
-        "type": "oauth2",
-        "description": "This API uses OAuth 2 with the authorization code grant flow. [More info](https://api.example.com/docs/auth)",
-        "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://ui-devel.attentivemobile.com/integrations/oauth-install?client_id={clientId}&redirect_uri={redirectUri}&scope={scope}",
-            "tokenUrl": "https://api.attentivemobile.com/v1/authorization-codes/tokens",
-            "scopes": {
-              "subscriptions:write": "write subscription events",
-              "events:write": "write custom events",
-              "ecommerce:write": "write ecommerce events"
-            }
-          }
-        }
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Private applications can authenticate through basic HTTP authentication by using their API key as the [Bearer Token](https://oauth.net/2/bearer-tokens/) when making calls to Attentive’s APIs. To generate a unique API key, you must [create an app in the Attentive platform](https://ui.attentivemobile.com/integrations/custom-app/management). Use the `GET /me` endpoint to verify that you are authenticating correctly.",
       }
     },
     "schemas": {
