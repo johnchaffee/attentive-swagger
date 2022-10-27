@@ -11,7 +11,7 @@ This project renders the Attentive Open API Specs in Swagger UI.
 
 Click the link below to view the Swagger Doc.
 
-* [Attentive Open API](https://johnchaffee.wiki/attentive-swagger/api/accounts_v1/)
+* [Attentive Open API](https://johnchaffee.wiki/attentive-swagger/api/)
 
 ## Instructions
 
