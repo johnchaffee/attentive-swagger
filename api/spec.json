@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.attentivemobile.com/v1",
+      "url": "https://johnchaffee.ngrok.io/attn-proxy",
       "description": "Attentive API"
     }
   ],
